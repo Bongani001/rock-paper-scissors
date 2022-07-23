@@ -14,11 +14,11 @@ function getComputerChoice() {
 let playerGuess = 'rock'
 let playerSelect = playerGuess.toLowerCase()
 let playerSelection = playerSelect[0].toUpperCase() + playerSelect.slice(1);
+let computerSelection = getComputerChoice();
 
 let playerWin = 0;
 let computerWin = 0;
 function playRound(playerSelection, computerSelection) {
-    
     if (playerSelection == computerSelection) {
         let result = `It's A Tie!`;
         playerWin++;
@@ -44,14 +44,9 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-
-let computerSelection = getComputerChoice();
-
-let i = 0;
 function game() {
     let round = playRound(playerSelection, computerSelection);
     console.log(round,` Player Wins: ${playerWin}`, `Computer Wins: ${computerWin}`);
-    i++;
 }
 
 function winner() {
@@ -64,8 +59,4 @@ function winner() {
     }
 }
 
-for (let i = 0; i < 5; i++) {
-    console.log(game());
-}
-
-console.log(winner())
+game()
