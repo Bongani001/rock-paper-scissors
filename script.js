@@ -11,11 +11,6 @@ function getComputerChoice() {
     }
 }
 
-let playerGuess = 'rock'
-let playerSelect = playerGuess.toLowerCase()
-let playerSelection = playerSelect[0].toUpperCase() + playerSelect.slice(1);
-let computerSelection = getComputerChoice();
-
 let playerWin = 0;
 let computerWin = 0;
 function playRound(playerSelection, computerSelection) {
@@ -40,13 +35,23 @@ function playRound(playerSelection, computerSelection) {
         computerWin++;
         return `You Lose! ${computerSelection} beats ${playerSelection}`;
     } else {
+        playerWin++;
         return `You Win! ${playerSelection} beats ${computerSelection}`;
     }
 }
 
 function game() {
-    let round = playRound(playerSelection, computerSelection);
-    console.log(round,` Player Wins: ${playerWin}`, `Computer Wins: ${computerWin}`);
+    for (let i = 0; i < 5; i++) {
+        let playerGuess = prompt('Enter rock, paper or scissors:');
+        let playerSelect = playerGuess.toLowerCase();
+        let playerSelection = playerSelect[0].toUpperCase() + playerSelect.slice(1);
+        let computerSelection = getComputerChoice();
+        let round = playRound(playerSelection, computerSelection);
+        console.log(round, ` Player Wins: ${playerWin}`, `Computer Wins: ${computerWin}`);
+        if (i === 4) {
+            console.log(winner());
+        }
+    }
 }
 
 function winner() {
