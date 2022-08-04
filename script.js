@@ -54,7 +54,7 @@ function playRound(playerSelection, computerSelection) {
 */
 const results = document.querySelector('.results');
 const score = document.querySelector('.score');
-
+const reset = document.querySelector('.reset');
 function game() {
     computerSelection = getComputerChoice()
     let round = playRound(playerSelection, computerSelection);
@@ -64,9 +64,20 @@ function game() {
     results.appendChild(result);
     score.textContent = `${playerWin} \: ${computerWin}`;
     if (playerWin == 5 || computerWin == 5) {
+        reset.style.display = 'flex';
         return winnerGame();
     }
+    return;
 }
+
+reset.addEventListener('click', e => {
+    playerWin = 0;
+    computerWin = 0;
+    score.textContent = '';
+    results.textContent = '';
+    winner.textContent = '';
+    reset.style.display = 'none';
+})
 
 
 
@@ -103,5 +114,5 @@ scissors.addEventListener('click', function() {
 
 
 
-const buttons = document.querySelectorAll('button')
+const buttons = document.querySelectorAll('#game-button')
 buttons.forEach(button => button.addEventListener('click', game))
