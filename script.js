@@ -65,6 +65,7 @@ function game() {
     score.textContent = `${playerWin} \: ${computerWin}`;
     if (playerWin == 5 || computerWin == 5) {
         reset.style.display = 'flex';
+        buttons.forEach(but => but.style.display = 'none');
         return winnerGame();
     }
     return;
@@ -77,6 +78,8 @@ reset.addEventListener('click', e => {
     results.textContent = '';
     winner.textContent = '';
     reset.style.display = 'none';
+    buttons.forEach(but => but.style.display = '');
+
 })
 
 
